@@ -8,10 +8,10 @@ export default defineNuxtConfig({
   css: ['@unocss/reset/tailwind.css'],
   runtimeConfig: {
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://afor.owln.ai',
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://aforday.owln.ai',
       siteName: 'Aforday',
       siteDescription: 'La charla de Afor',
-      language: 'es', // prefer more explicit language codes like `en-AU` over `en`
+      language: 'es',
     },
   },
 })
