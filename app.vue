@@ -4,6 +4,16 @@ import VueCountdown from '@chenfengyuan/vue-countdown'
 const now = new Date()
 const newYear = new Date('Mon May 08 2023 17:30:00 GMT+0000')
 const time = ref(newYear - now)
+
+const transformSlotProps = (props) => {
+  const formattedProps = {}
+
+  Object.entries(props).forEach(([key, value]) => {
+    formattedProps[key] = value < 10 ? `0${value}` : String(value)
+  });
+
+  return formattedProps
+}
 </script>
 
 <template>
@@ -20,7 +30,7 @@ const time = ref(newYear - now)
       t.tv/mouredev
     </NuxtLink>
     <ClientOnly>
-      <VueCountdown v-slot="{ days, hours, minutes, seconds }" :time="time" class="inline-block  text-[var(--arcoiris)] bg-black my-4 font-mono px-3 py-2 border-2 border-[var(--arcoiris)] text-4xl">
+      <VueCountdown v-slot="{ days, hours, minutes, seconds }" :time="time" :transform="transformSlotProps" class="inline-block  text-[var(--arcoiris)] bg-black my-4 font-mono px-3 py-2 border-2 border-[var(--arcoiris)] text-4xl">
         {{ days }}:{{ hours }}:{{ minutes }}:{{ seconds }}
       </VueCountdown>
     </ClientOnly>
